@@ -7,7 +7,7 @@ function buildConfig(slides, outPath){
     
     config.output.path = path.resolve(".");
     config.plugins.unshift(new HtmlWebpackPlugin({
-        template: "./src/index.ejs",
+        template: path.resolve(__dirname, "./index.ejs"),
         filename: path.relative(".", outPath),
         templateParameters: {
             slides: slides
