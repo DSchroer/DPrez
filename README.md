@@ -14,7 +14,11 @@ npm install dprez
 ```
 
 ### Usage
-DPrez works by reading your `.md` files and creating html presentations out of them. Simply point it to the correct file:
+DPrez works by reading your `.md` files and creating html presentations out of them. 
+
+To separate the file into multiple slides add the magic `<!-- slide -->` comment between them.
+
+Simply point it to the correct file:
 
 ```
 dprez ./path/to/md [--watch] [--theme <themefile>]
