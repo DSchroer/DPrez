@@ -18,13 +18,26 @@ const wp = require("webpack");
 const configBuilder = require("./wp-config");
 const sl = require("./slide-loader");
 const path = require("path");
+const fs = require("fs");
 
 function run(slides, watch, theme) {
+
+  if (theme) {
+    theme = JSON.parse(fs.readFileSync(theme).toString()) || {};
+  } else {
+    theme = {};
+  }
+
+  globalThis.slides = () => sl.loadSlides(slides, theme);
+  globalThis.theme = () => theme.theme || "white";
+  globalThis.codeTheme = () => theme["code-theme"] || "default";
+  globalThis.title = () => path.basename(slides, path.extname(slides));
+
   const outPath = path.resolve(
     path.dirname(slides),
     path.basename(slides, path.extname(slides)) + ".html"
   );
-  const config = configBuilder(() => sl.loadSlides(slides, theme), outPath);
+  const config = configBuilder(outPath);
   const compiler = wp(config);
 
   if (watch) {

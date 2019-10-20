@@ -1,0 +1,22 @@
+<head>
+  <meta charset="UTF-8" />
+  <title>${title()}</title>
+
+  <style>
+    ${require("reveal.js/css/reset.css")}
+    ${require("reveal.js/css/reveal.css")}
+    ${require("reveal.js/css/theme/" + theme() + ".css")}
+    ${require("highlight.js/styles/" + codeTheme() +".css")}
+  </style>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+        ${slides()}
+    </div>
+  </div>
+
+  <script>
+      ${require("!!html-loader!../../dist/main.js")}
+  </script>
+</body>
