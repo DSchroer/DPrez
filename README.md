@@ -1,4 +1,4 @@
-### DPrez
+# DPrez
 
 DPrez is a simple to use presentation builder that uses markdown and reveal.js to produce simple yet consistent results.
 
@@ -34,6 +34,8 @@ Then open the generated html file in your browser.
 
 When generating the presentation it is possible to specify the theme. Theme files have options to configure your presentation and are assumed to be json files.
 
+All properties in a theme file are optional.
+
 ```json
 {
   "theme": "beige | black | blood | league | moon | night | serif | simple | sky | solarized | white",
@@ -63,6 +65,8 @@ You can achieve animations by writing special style code that targets particular
 
 For full slide animations you can use:
 `section.present.slide-1` assuming that your slide is number 1. Slide numbers begin at 0.
+
+To animate all slides simply use `section.present`.
 
 ### Roadmap
 
