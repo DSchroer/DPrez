@@ -42,6 +42,25 @@ When generating the presentation it is possible to specify the theme. Theme file
 }
 ```
 
+### Animations
+You can achieve animations by writing special style code that targets particular elements. In this example the hello header is moved in from the right.
+
+```md
+## hello
+
+<style>
+.present #hello {
+  animation-name: example;
+  animation-duration: 1s;
+}
+
+@keyframes example {
+  from {transform: translate(1000px, 0);}
+  to {transform: translate(0,0)}
+}
+</style>
+```md
+
 ### Roadmap
 
 The roadmap is in no particular order and may be subject to change.
