@@ -3,6 +3,12 @@ type: docker
 name: default
 
 steps:
+- name: build
+  image: node
+  commands:
+    - "npm ci"
+    - "npm run build"
+
 - name: publish
   image: plugins/npm
   settings:

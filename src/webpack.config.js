@@ -13,7 +13,7 @@ module.exports = {
       {
         test: /\.html$/i,
         use: [
-          "file-loader?name=[name].html",
+          `file-loader?name=${title()}.html`,
           "extract-loader",
           {
             loader: "html-loader",

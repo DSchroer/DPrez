@@ -5,8 +5,14 @@ Reveal.initialize({
   controls: false
 });
 
-Reveal.registerPlugin("md", require("reveal.js/plugin/markdown/markdown"));
-
 const hljs = require("highlight.js");
-window.hljs = hljs;
 hljs.initHighlightingOnLoad();
+
+Reveal.addEventListener("slidechanged", function(event) {
+
+});
+
+function OnSlide(fn) {
+  console.log(document.currentScript)
+}
+window.OnSlide = OnSlide;

@@ -19,6 +19,7 @@ const configBuilder = require("./wp-config");
 const sl = require("./slide-loader");
 const path = require("path");
 const fs = require("fs");
+var liveServer = require("live-server");
 
 function run(slides, watch, theme) {
 
@@ -33,14 +34,18 @@ function run(slides, watch, theme) {
   globalThis.codeTheme = () => theme["code-theme"] || "default";
   globalThis.title = () => path.basename(slides, path.extname(slides));
 
-  const outPath = path.resolve(
-    path.dirname(slides),
-    path.basename(slides, path.extname(slides)) + ".html"
-  );
-  const config = configBuilder(outPath);
+  const config = configBuilder(slides);
   const compiler = wp(config);
 
   if (watch) {
+
+    var params = {
+      host: "0.0.0.0", // Set the address to bind to. Defaults to 0.0.0.0 or process.env.IP.
+      open: true, // When false, it won't load your browser by default.
+      file: `${title()}.html`, // When set, serve this file (server root relative) for every 404 (useful for single-page applications)
+    };
+
+    let started = false;
     compiler.watch(
       {
         aggregateTimeout: 60,
@@ -50,9 +55,16 @@ function run(slides, watch, theme) {
         if (err) {
           error(err);
         }
+        
+        if(!started){
+          liveServer.start(params);
+          started = true;
+        }
+
         console.log(stats.toString());
       }
     );
+    
   } else {
     compiler.run((err, stats) => {
       if (err) {
