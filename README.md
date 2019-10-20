@@ -59,7 +59,10 @@ You can achieve animations by writing special style code that targets particular
   to {transform: translate(0,0)}
 }
 </style>
-```md
+```
+
+For full slide animations you can use:
+`section.present.slide-1` assuming that your slide is number 1. Slide numbers begin at 0.
 
 ### Roadmap
 
