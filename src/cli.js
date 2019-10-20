@@ -5,6 +5,7 @@ const program = new commander.Command();
 program.version(require("../package.json").version);
 program.arguments("<slides>");
 program.option("-w, --watch", "watch mode");
+program.option("-p, --port <port>", "watch server port");
 program.option("-t, --theme <theme>", "theme");
 program.action(slides => {
   run(slides, program.watch, program.theme);
@@ -41,6 +42,7 @@ function run(slides, watch, theme) {
 
     var params = {
       host: "0.0.0.0", // Set the address to bind to. Defaults to 0.0.0.0 or process.env.IP.
+      port: program.port,
       open: true, // When false, it won't load your browser by default.
       file: `${title()}.html`, // When set, serve this file (server root relative) for every 404 (useful for single-page applications)
     };
