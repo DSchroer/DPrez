@@ -72,6 +72,14 @@ For full slide animations you can use:
 
 To animate all slides simply use `section.present`.
 
+### Printing
+
+While the generated presentation doesnt have the ability to print, you can use the tool `decktape` to quickly make a pdf from your presentation.
+```cmd
+npm i decktape
+npx decktape ./slides.html out.pdf
+```
+
 ### Roadmap
 
 The roadmap is in no particular order and may be subject to change.
@@ -79,4 +87,3 @@ The roadmap is in no particular order and may be subject to change.
 The current plan is to add:
 
 - JS Plugin support
-- PDF Rendering
