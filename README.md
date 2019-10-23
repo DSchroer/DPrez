@@ -30,6 +30,10 @@ dprez ./path/to/md [--watch] [--theme <themefile>]
 
 Then open the generated html file in your browser.
 
+### Sections
+
+If you want to add a multi part slide, you can use the `<!-- hide -->` comment to add a second stage to a given slide.
+
 ### Themes
 
 When generating the presentation it is possible to specify the theme. Theme files have options to configure your presentation and are assumed to be json files.

@@ -2,7 +2,7 @@ const Reveal = require("reveal.js");
 window.Reveal = Reveal;
 
 Reveal.initialize({
-  controls: false
+  controls: false,
 });
 
 const hljs = require("highlight.js");
