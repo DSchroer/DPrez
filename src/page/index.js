@@ -3,16 +3,8 @@ window.Reveal = Reveal;
 
 Reveal.initialize({
   controls: false,
+  hash: true,
+  width: theme.width || 960,
+	height: theme.height || 700,
+	margin: theme.margin || 0.1,
 });
-
-const hljs = require("highlight.js");
-hljs.initHighlightingOnLoad();
-
-Reveal.addEventListener("slidechanged", function(event) {
-
-});
-
-function OnSlide(fn) {
-  console.log(document.currentScript)
-}
-window.OnSlide = OnSlide;

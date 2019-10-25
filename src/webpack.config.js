@@ -41,7 +41,8 @@ module.exports = {
       { test: /\.png$/, use: ["url-loader?mimetype=image/png"] },
       { test: /\.jpg$/, use: ["url-loader?mimetype=image/jpg"] },
       { test: /\.jpeg$/, use: ["url-loader?mimetype=image/jpeg"] },
-      { test: /\.gif$/, use: ["url-loader?mimetype=image/gif"] }
+      { test: /\.gif$/, use: ["url-loader?mimetype=image/gif"] },
+      { test: /\.sgv$/, use: ["url-loader?mimetype=image/sgv"] }
     ]
   },
   resolveLoader: {
