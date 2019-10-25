@@ -32,7 +32,7 @@ function run(slides, watch, theme) {
 
   globalThis.slides = () => sl.loadSlides(slides, theme);
   globalThis.theme = () => theme.theme || "white";
-  globalThis.themeJSON = () => JSON.stringify(theme);
+  globalThis.themeValue = () => theme;
   globalThis.codeTheme = () => theme["code-theme"] || "default";
   globalThis.title = () => path.basename(slides, path.extname(slides));
 

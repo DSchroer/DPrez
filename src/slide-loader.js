@@ -7,7 +7,20 @@ const slideTemplate = fs
   .readFileSync(path.resolve(__dirname, "./page/slide.ejs"))
   .toString();
 
-module.exports.loadSlides = function loadSlides(pathStr, theme) {
+function loadImage(src) {
+  if (!src) {
+    return;
+  }
+
+  const imageLoc = path.resolve(src);
+  return (
+    "data:image/png;base64, " + fs.readFileSync(imageLoc).toString("base64")
+  );
+};
+
+module.exports.loadImage = loadImage;
+
+module.exports.loadSlides = (pathStr, theme) => {
   const dir = path.dirname(pathStr);
 
   const data = fs.readFileSync(pathStr).toString();
@@ -22,17 +35,6 @@ module.exports.loadSlides = function loadSlides(pathStr, theme) {
     }
     return `<img src="${loadImage(href)}" alt="${text}">`;
   };
-
-  function loadImage(src) {
-    if (!src) {
-      return;
-    }
-
-    const imageLoc = path.resolve(dir, src);
-    return (
-      "data:image/png;base64, " + fs.readFileSync(imageLoc).toString("base64")
-    );
-  }
 
   function loadSVG(src) {
     const imageLoc = path.resolve(dir, src);

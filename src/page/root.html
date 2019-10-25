@@ -12,12 +12,13 @@
 <body>
   <div class="reveal">
     <div class="slides">
-        ${slides()}
+      ${slides()}
     </div>
   </div>
 
   <script>
-      theme = ${themeJSON()};
-      ${require("!!html-loader!../../dist/main.js")}
+    theme = ${JSON.stringify(themeValue())};
+    background = "${require('../slide-loader').loadImage(themeValue().background)}"
+    ${require("!!html-loader!../../dist/main")}
   </script>
 </body>
