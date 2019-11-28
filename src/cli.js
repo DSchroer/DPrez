@@ -24,16 +24,18 @@ var liveServer = require("live-server");
 
 function run(slides, watch, theme) {
 
+  let themeData = {};
   if (theme) {
     theme = JSON.parse(fs.readFileSync(theme).toString()) || {};
-  } else {
-    theme = {};
+    if(themeData.background){
+      theme.background = path.resolve(theme, theme.background);
+    }
   }
 
-  globalThis.slides = () => sl.loadSlides(slides, theme);
-  globalThis.theme = () => theme.theme || "white";
-  globalThis.themeValue = () => theme;
-  globalThis.codeTheme = () => theme["code-theme"] || "default";
+  globalThis.slides = () => sl.loadSlides(slides, themeData);
+  globalThis.theme = () => themeData.theme || "white";
+  globalThis.themeValue = () => themeData;
+  globalThis.codeTheme = () => themeData["code-theme"] || "default";
   globalThis.title = () => path.basename(slides, path.extname(slides));
 
   const config = configBuilder(slides);

@@ -9,6 +9,7 @@ Array.from(sections).forEach(section => {
 Reveal.initialize({
   controls: false,
   hash: true,
+  overview: false,
   width: theme.width || 960,
 	height: theme.height || 700,
 	margin: theme.margin || 0.1,
