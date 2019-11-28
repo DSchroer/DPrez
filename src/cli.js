@@ -26,9 +26,9 @@ function run(slides, watch, theme) {
 
   let themeData = {};
   if (theme) {
-    theme = JSON.parse(fs.readFileSync(theme).toString()) || {};
+    themeData = JSON.parse(fs.readFileSync(theme).toString()) || {};
     if(themeData.background){
-      theme.background = path.resolve(theme, theme.background);
+      themeData.background = path.resolve(path.dirname(theme), themeData.background);
     }
   }
 
