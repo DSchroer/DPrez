@@ -75,6 +75,20 @@ For full slide animations you can use:
 
 To animate all slides simply use `section.present`.
 
+### Examples
+
+There are examples located the `examples` directory.
+
+```bash
+npx dprez ./example.md --watch
+```
+
+To apply the theme to the example use:
+
+```bash
+npx dprez ./example.md --theme ./theme.json --watch
+```
+
 ### Printing
 
 While the generated presentation doesnt have the ability to print, you can use the tool `decktape` to quickly make a pdf from your presentation.
@@ -95,3 +109,4 @@ The roadmap is in no particular order and may be subject to change.
 The current plan is to add:
 
 - JS Plugin support
+
