@@ -77,13 +77,13 @@ To animate all slides simply use `section.present`.
 
 ### Examples
 
-There are examples located the `examples` directory.
+There are examples located the `examples` directory. Navigate to that directory and run the following command to view it:
 
 ```bash
 npx dprez ./example.md --watch
 ```
 
-To apply the theme to the example use:
+To apply the theme to the examples use:
 
 ```bash
 npx dprez ./example.md --theme ./theme.json --watch
