@@ -32,11 +32,11 @@ function run(slides, watch, theme) {
     }
   }
 
-  globalThis.slides = () => sl.loadSlides(slides, themeData);
-  globalThis.theme = () => themeData.theme || "white";
-  globalThis.themeValue = () => themeData;
-  globalThis.codeTheme = () => themeData["code-theme"] || "default";
-  globalThis.title = () => path.basename(slides, path.extname(slides));
+  global.slides = () => sl.loadSlides(slides, themeData);
+  global.theme = () => themeData.theme || "white";
+  global.themeValue = () => themeData;
+  global.codeTheme = () => themeData["code-theme"] || "default";
+  global.title = () => path.basename(slides, path.extname(slides));
 
   const config = configBuilder(slides);
   const compiler = wp(config);

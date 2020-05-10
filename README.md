@@ -25,7 +25,7 @@ To separate the file into multiple slides add the magic `<!-- slide -->` comment
 Simply point it to the correct file:
 
 ```
-dprez ./path/to/md [--watch] [--theme <themefile>]
+npx dprez ./path/to/md [--watch] [--theme <themefile>]
 ```
 
 Then open the generated html file in your browser.

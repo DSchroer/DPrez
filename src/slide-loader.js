@@ -29,6 +29,12 @@ module.exports.loadSlides = (pathStr, theme) => {
 
   const renderer = new marked.Renderer();
 
+  renderer.code = (code, language) => {
+    const highlight = require("highlight.js");
+    const adjustedCode = highlight.highlight(language, code);
+    return `<pre><code class="hljs language-${language}">${adjustedCode.value}</code></pre>`
+  }
+
   renderer.image = (href, title, text) => {
     if (href && path.extname(href) === ".svg") {
       return loadSVG(href);
@@ -48,7 +54,6 @@ module.exports.loadSlides = (pathStr, theme) => {
 
       const markedOptions = {
         renderer: renderer,
-        highlight: code => require("highlight.js").highlightAuto(code).value
       };
 
       return ejs.render(slideTemplate, {
