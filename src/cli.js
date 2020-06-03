@@ -34,7 +34,12 @@ function run(slides, watch, themePath) {
   global.themeValue = () => themeLoader();
   global.codeTheme = () => themeLoader()["code-theme"] || "default";
 
-  const config = configBuilder([slides, themePath]);
+  const watchPaths = [slides];
+  if(themePath){
+    watchPaths.push(themePath);
+  }
+
+  const config = configBuilder(watchPaths);
   const compiler = wp(config);
 
   if (watch) {
