@@ -1,7 +1,6 @@
-const Reveal = require("reveal.js");
-window.Reveal = Reveal;
+window.Reveal = require("reveal.js");
+const sections = document.getElementsByTagName("section");
 
-var sections = document.getElementsByTagName("section");
 Array.from(sections).forEach(section => {
   section.setAttribute("data-background-image", background);
 });

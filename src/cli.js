@@ -16,29 +16,25 @@ if (!process.argv.slice(2).length) {
 }
 
 const wp = require("webpack");
-const configBuilder = require("./wp-config");
+const configBuilder = require("./webpack-config");
 const sl = require("./slide-loader");
 const path = require("path");
 const fs = require("fs");
 var liveServer = require("live-server");
+const themeLoaderFn = require("./theme-loader");
 
-function run(slides, watch, theme) {
+function run(slides, watch, themePath) {
 
-  let themeData = {};
-  if (theme) {
-    themeData = JSON.parse(fs.readFileSync(theme).toString()) || {};
-    if(themeData.background){
-      themeData.background = path.resolve(path.dirname(theme), themeData.background);
-    }
-  }
+  const themeLoader = themeLoaderFn.bind(undefined, themePath);
 
-  global.slides = () => sl.loadSlides(slides, themeData);
-  global.theme = () => themeData.theme || "white";
-  global.themeValue = () => themeData;
-  global.codeTheme = () => themeData["code-theme"] || "default";
   global.title = () => path.basename(slides, path.extname(slides));
+  global.slides = () => sl.loadSlides(slides, themeLoader);
 
-  const config = configBuilder(slides);
+  global.theme = () => themeLoader().theme || "white";
+  global.themeValue = () => themeLoader();
+  global.codeTheme = () => themeLoader()["code-theme"] || "default";
+
+  const config = configBuilder([slides, themePath]);
   const compiler = wp(config);
 
   if (watch) {

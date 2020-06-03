@@ -20,7 +20,7 @@ function loadImage(src) {
 
 module.exports.loadImage = loadImage;
 
-module.exports.loadSlides = (pathStr, theme) => {
+module.exports.loadSlides = (pathStr, themeBuilder) => {
   const dir = path.dirname(pathStr);
 
   const data = fs.readFileSync(pathStr).toString();
@@ -58,7 +58,7 @@ module.exports.loadSlides = (pathStr, theme) => {
 
       return ejs.render(slideTemplate, {
         slide: marked(mainSlide, markedOptions),
-        theme,
+        themeBuilder,
         loadImage,
         index,
         fragments: fragmentData.map(frag => marked(frag, markedOptions))
