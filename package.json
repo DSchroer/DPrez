@@ -23,7 +23,7 @@
     "null-loader": "^3.0.0",
     "raw-loader": "^3.1.0",
     "remove-files-webpack-plugin": "^1.4.1",
-    "reveal.js": "^3.9.2",
+    "reveal.js": "^4.3.0",
     "style-loader": "^1.2.1",
     "webpack": "^4.43.0",
     "webpack-watch-files-plugin": "^1.0.3"
